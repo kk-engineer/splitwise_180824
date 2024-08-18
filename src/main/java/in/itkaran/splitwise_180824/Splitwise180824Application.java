@@ -1,6 +1,7 @@
 package in.itkaran.splitwise_180824;
 
 import in.itkaran.splitwise_180824.commands.CommandExecutor;
+import in.itkaran.splitwise_180824.commands.CreateExpenseCommand;
 import in.itkaran.splitwise_180824.commands.RegisterUserCommand;
 import in.itkaran.splitwise_180824.commands.SettleUpUserCommand;
 import in.itkaran.splitwise_180824.controllers.SettleUpController;
@@ -32,6 +33,7 @@ public class Splitwise180824Application implements CommandLineRunner {
         // Register commands
         commandExecutor.addCommand(new SettleUpUserCommand(settleUpController));
         commandExecutor.addCommand(new RegisterUserCommand(userController));
+        commandExecutor.addCommand(new CreateExpenseCommand());
 
         while (true) {
             System.out.println("Enter command:");

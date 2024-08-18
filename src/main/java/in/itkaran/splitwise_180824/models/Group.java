@@ -15,13 +15,10 @@ import java.util.List;
 public class Group extends BaseModel {
     private String name;
     private String description;
-
     @ManyToMany
     private List<User> members;
-
     @ManyToOne
     private User createdBy; //Admin
-
     @OneToMany(mappedBy = "group")
     private List<Expense> expenses;
 }

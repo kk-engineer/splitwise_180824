@@ -18,7 +18,7 @@ public class RegisterUserCommand implements Command {
         System.out.println("Checking if RegisterUserCommand matches the input: " + input);
         List<String> words = List.of(input.split(" "));
 
-        return words.size() == 4 && words.get(0).equals(CommandKeywords.REGISTER_COMMAND);
+        return words.size() == 4 && words.get(0).equals(CommandKeywords.REGISTER_USER_COMMAND);
     }
 
     @Override

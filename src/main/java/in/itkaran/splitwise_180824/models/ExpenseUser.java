@@ -13,12 +13,9 @@ import lombok.Setter;
 public class ExpenseUser extends BaseModel {
     @ManyToOne
     private Expense expense;
-
     @ManyToOne
     private User user;
-
     private int amount;
-
     @Enumerated(EnumType.ORDINAL)
     private ExpenseUserType expenseUserType;
 }
