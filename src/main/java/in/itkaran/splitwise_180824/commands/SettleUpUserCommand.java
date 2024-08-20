@@ -1,18 +1,19 @@
 package in.itkaran.splitwise_180824.commands;
 
-import in.itkaran.splitwise_180824.controllers.SettleUpController;
+import in.itkaran.splitwise_180824.controllers.ExpenseController;
 import in.itkaran.splitwise_180824.dtos.SettleUpUserRequestDto;
 import in.itkaran.splitwise_180824.dtos.SettleUpUserResponseDto;
+import in.itkaran.splitwise_180824.models.Transaction;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
 public class SettleUpUserCommand implements Command {
-    private SettleUpController settleUpController;
+    private ExpenseController expenseController;
 
-    public SettleUpUserCommand(SettleUpController settleUpController) {
-        this.settleUpController = settleUpController;
+    public SettleUpUserCommand(ExpenseController expenseController) {
+        this.expenseController = expenseController;
     }
 
     @Override
@@ -30,6 +31,13 @@ public class SettleUpUserCommand implements Command {
         Long userId = Long.valueOf(words.get(0));
         SettleUpUserRequestDto requestDto = new SettleUpUserRequestDto();
         requestDto.setUserId(userId);
-        SettleUpUserResponseDto responseDto = settleUpController.settleUpUser(requestDto);
+        List<Transaction> transactions = expenseController.settleUpUser(requestDto);
+        for (Transaction transaction : transactions) {
+            System.out.println("=====================================");
+            System.out.println("From: " + transaction.getFrom());
+            System.out.println("To: " + transaction.getTo());
+            System.out.println("Amount: " + transaction.getAmount());
+            System.out.println("=====================================");
+        }
     }
 }

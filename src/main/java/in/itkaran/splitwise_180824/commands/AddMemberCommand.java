@@ -1,6 +1,7 @@
 package in.itkaran.splitwise_180824.commands;
 
 import java.util.List;
+import java.util.PriorityQueue;
 
 public class AddMemberCommand implements Command {
     @Override
@@ -13,5 +14,6 @@ public class AddMemberCommand implements Command {
     public void execute(String input) {
         List<String> words = List.of(input.split(" "));
         // TODO: Implement this method
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
     }
 }

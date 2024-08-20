@@ -4,7 +4,7 @@ import in.itkaran.splitwise_180824.commands.CommandExecutor;
 import in.itkaran.splitwise_180824.commands.CreateExpenseCommand;
 import in.itkaran.splitwise_180824.commands.RegisterUserCommand;
 import in.itkaran.splitwise_180824.commands.SettleUpUserCommand;
-import in.itkaran.splitwise_180824.controllers.SettleUpController;
+import in.itkaran.splitwise_180824.controllers.ExpenseController;
 import in.itkaran.splitwise_180824.controllers.UserController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -18,7 +18,7 @@ public class Splitwise180824Application implements CommandLineRunner {
     @Autowired
     private CommandExecutor commandExecutor;
     @Autowired
-    private SettleUpController settleUpController;
+    private ExpenseController expenseController;
     @Autowired
     private UserController userController;
 
@@ -31,9 +31,9 @@ public class Splitwise180824Application implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Scanner scanner = new Scanner(System.in);
         // Register commands
-        commandExecutor.addCommand(new SettleUpUserCommand(settleUpController));
         commandExecutor.addCommand(new RegisterUserCommand(userController));
-        commandExecutor.addCommand(new CreateExpenseCommand());
+        commandExecutor.addCommand(new CreateExpenseCommand(expenseController));
+        commandExecutor.addCommand(new SettleUpUserCommand(expenseController));
 
         while (true) {
             System.out.println("Enter command:");

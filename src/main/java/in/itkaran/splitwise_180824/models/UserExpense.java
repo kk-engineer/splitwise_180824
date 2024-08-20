@@ -10,12 +10,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-public class ExpenseUser extends BaseModel {
-    @ManyToOne
-    private Expense expense;
+public class UserExpense extends BaseModel {
     @ManyToOne
     private User user;
+    @ManyToOne
+    private Expense expense;
     private int amount;
     @Enumerated(EnumType.ORDINAL)
-    private ExpenseUserType expenseUserType;
+    private UserExpenseType userExpenseType;
 }

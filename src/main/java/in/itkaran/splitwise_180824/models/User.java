@@ -11,4 +11,8 @@ public class User extends BaseModel {
     private String name;
     private String phoneNumber;
     private String password;
+
+    public String toString() {
+        return  name;
+    }
 }

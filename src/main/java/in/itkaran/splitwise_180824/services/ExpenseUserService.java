@@ -1,18 +1,18 @@
 package in.itkaran.splitwise_180824.services;
 
-import in.itkaran.splitwise_180824.models.ExpenseUser;
-import in.itkaran.splitwise_180824.repositories.ExpenseUserRepository;
+import in.itkaran.splitwise_180824.models.UserExpense;
+import in.itkaran.splitwise_180824.repositories.UserExpenseRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ExpenseUserService {
-    private ExpenseUserRepository expenseUserRepository;
+    private UserExpenseRepository userExpenseRepository;
 
-    public ExpenseUserService(ExpenseUserRepository expenseUserRepository) {
-        this.expenseUserRepository = expenseUserRepository;
+    public ExpenseUserService(UserExpenseRepository userExpenseRepository) {
+        this.userExpenseRepository = userExpenseRepository;
     }
 
-    public ExpenseUser addExpenseUser(ExpenseUser expenseUser) {
-        return expenseUserRepository.save(expenseUser);
+    public UserExpense addExpenseUser(UserExpense userExpense) {
+        return userExpenseRepository.save(userExpense);
     }
 }
